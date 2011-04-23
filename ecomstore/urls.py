@@ -10,7 +10,7 @@ admin.autodiscover()
 
 #propios
 from settings import MEDIA_ROOT
-
+import views
 
 urlpatterns = patterns('',
     # Example:
@@ -23,7 +23,9 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
 
     #archivos staticos
-    (r'^site_media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT, 'show_indexes': True }),
+    (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT, 'show_indexes': True }),
 
+    #urls
+    (r'^/?$', views.index),
     
 )

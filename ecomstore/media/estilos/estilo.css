@@ -1,0 +1,37 @@
+
+
+h1, h2, h3 {
+	margin: 0px 0px 0px 0px;
+}
+
+.contenedor_base {
+	background-color: #09F;
+	padding-left: 30px;
+	padding-bottom: 20px;	
+}
+
+.cabecera {
+	background-color: #FFF;
+	margin-bottom: 0px;
+	margin-top: 0px;	
+	height: 100px;
+	vertical-align: middle;
+}
+
+.menu {
+	background-color: #CCC;
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+.cuerpo {
+	background-color: #FFF;	
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+.pie_pag {
+	background-color: #CCC;
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
