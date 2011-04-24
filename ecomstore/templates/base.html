@@ -1,29 +1,38 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Documento sin título</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Documento sin título</title>
     <link rel="Stylesheet" type="text/css" href="/static/estilos/estilo.css" />
 </head>
 
 <body>
-	<div class='contenedor_base'>
-    
-    <div class='cabecera'>
-		<h1>Mi Carrito Compras</h1>
+    <div align='center'>
+    <div class="contenedor">
+        <div class='cabecera'>
+            <h1>Mi Carrito Compras</h1>
+        </div>
+
+        <div class='cuerpo'>
+            <div class='secundario'>
+                <h3>Menu</h3>
+                <ul>
+                    <li><a href=''>Catalogo de Productos</a></li>
+                    <li><a href=''>Mi Carrito</a></li>
+                </ul>
+            </div>
+
+            <div class="principal">
+                <p>body</p>
+                {% block cuerpo %}
+                {% endblock %}
+            </div>
+        </div>
+
+        <div class='pie'>
+            <p>[pie pagina]</p>
+        </div>
     </div>
-     
-    <div class='menu'>
-		<a href=''>Catalogo</a>
-	</div>
-	
-    <div class="cuerpo">
-		<h2>Bienvenido</h2>
-	</div>
-    
-	<div class='pie_pag'>
-        [pie pagina]
-	</div>
-</div>
+    </div>
 </body>
 </html>
