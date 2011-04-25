@@ -12,6 +12,8 @@ admin.autodiscover()
 from settings import MEDIA_ROOT
 import views
 
+import catalogo.views as catalogo_views
+
 urlpatterns = patterns('',
     # Example:
     # (r'^ecomstore/', include('ecomstore.foo.urls')),
@@ -27,5 +29,16 @@ urlpatterns = patterns('',
 
     #urls
     (r'^/?$', views.index),
+
+    ## - catalgo - ##
+    (r'^catalogo/producto/nuevo/$', catalogo_views.nuevo_producto),
+    (r'^catalogo/producto/agregar-categoria/$', catalogo_views.agregar_categoria),
+    (r'^catalogo/producto/listado-categorias/$' ,catalogo_views.listado_categorias),
+
+    ## - usuarios - ##
+    #(r'^accounts/login/$', generics_views.login),
+    #(r'^accounts/logout/$', generics_views.logout),
+
+
     
 )

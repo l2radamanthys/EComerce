@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 from random import randint
+from constantes import *
 
 
 def generar_carrito_id():
@@ -23,3 +25,24 @@ def get_carrito_id(request):
     if request.session.get('carrito_id', None) != None:
         request.session['carrito_id'] = generar_carrito_id()
     return request.session['carrito_id']
+
+
+def get_GET_value(request, key='', default='', blank=''):
+    value = request.POST.get(key, default)
+    if value == '':
+        value = blank
+    return value
+
+
+def get_POST_value(request, key='', default='', blank=''):
+     value = request.POST.get(key, default)
+     if value == '':
+        value = blank
+     return value
+
+
+def get_value(request=None, key='', default='', blank='', method=POST):
+    if method == POST:
+        return get_POST_value(request, key, default, blank)
+    else:
+        return get_GET_value(request, key, default, blank)

@@ -12,3 +12,6 @@ import os
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 _MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
 MI_TEMPLATE_DIR = os.path.join(PROJECT_PATH, 'templates')
+
+POST = "POST"
+GET = "GET"

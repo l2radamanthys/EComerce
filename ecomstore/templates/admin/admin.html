@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% comment %}
+    vista q veran los usuarios administradores
+{% endcomment %}
+
+{% block secundario %}
+    <h3>Menu</h3>
+    <ul>
+        <li><a href=''>Catalogo de Productos</a></li>
+        <li><a href=''>Mi Carrito</a></li>
+    </ul>
+
+    <h3>Productos</h3>
+    <ul>
+        <li><a href=''>Agregar</a></li>
+        <li><a href=''>Modificar</a></li>
+        <li><a href=''>Borrar</a></li>
+    </ul>
+
+    <h3>Categorias</h3>
+    <ul>
+        <li><a href='/catalogo/producto/agregar-categoria/'>Agregar</a></li>
+        <li><a href='/catalogo/producto/listado-categorias/'>Listado</a></li>
+    </ul>
+{% endblock %}
+
+{% block cuerpo %}
+    <h1>hola mundo</h1>
+    <h2>hola mundo</h2>
+    <br />
+    <a href="" class='boton'>my fancy botton</a>
+{% endblock %}

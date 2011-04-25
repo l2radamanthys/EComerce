@@ -1,0 +1,13 @@
+{% extends "admin/admin.html" %}
+
+{% block cuerpo %}
+    <h2>Listado de Categorias</h2>
+    <br />
+    <table width="400px" border="0" cellpadding="2px">
+    {% for cat in categorias %}
+        <tr>
+            <td class="field">{{ cat }}</td>
+        </td>
+    {% endfor %}
+    </table>
+{% endblock %}

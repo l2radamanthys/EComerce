@@ -7,7 +7,10 @@ from django.template import Context
 
 
 def index(request):
-    plantilla = get_template('base.html')
+    if not(request.user.is_authenticated()):
+        plantilla = get_template('usuarios.html')
+    else:
+        plantilla = get_template('admin/admin.html')
     dict = {}
 
     contexto = Context(dict)

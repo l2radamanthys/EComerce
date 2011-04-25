@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 from django.db import models
 
-# Create your models here.
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=50)
@@ -23,7 +23,7 @@ class Categoria(models.Model):
 
 
     def __unicode__(self):
-        return self.name
+        return self.nombre
 
 
     @models.permalink

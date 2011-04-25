@@ -15,15 +15,12 @@
 
         <div class='cuerpo'>
             <div class='secundario'>
-                <h3>Menu</h3>
-                <ul>
-                    <li><a href=''>Catalogo de Productos</a></li>
-                    <li><a href=''>Mi Carrito</a></li>
-                </ul>
+                {% block secundario %}
+                {% endblock%}
+
             </div>
 
             <div class="principal">
-                <p>body</p>
                 {% block cuerpo %}
                 {% endblock %}
             </div>
