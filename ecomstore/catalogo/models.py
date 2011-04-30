@@ -36,7 +36,7 @@ class Producto(models.Model):
     slug = models.SlugField(max_length=50, unique=True, help_text='unico valor del producto para la URL')
     marca = models.CharField(max_length=50)
     sku = models.CharField(max_length=50)
-    imagen = models.CharField(max_length=50)
+    imagen = models.ImageField(upload_to="imagenes/fotos")
     precio = models.DecimalField(max_digits=9, decimal_places=2)
     precio_anterior = models.DecimalField(max_digits=9, decimal_places=2, blank=True, default=0.00)
     is_bestseller = models.BooleanField(default=False) #?
@@ -47,13 +47,13 @@ class Producto(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, help_text="Fecha creacion")
     updated_at = models.DateTimeField(auto_now=True, help_text="Ultima Modificacion")
     
-    #
-    categorias = models.ManyToManyField(Categoria)
+    #categorias = models.ManyToManyField(Categoria)
+    categoria = models.ForeignKey(Categoria)
 
 
     class Meta:
         db_table = 'productos'
-        ordering = ['-created_at']
+        ordering = ['-created_at', 'nombre']
 
 
     def __unicode__(self):

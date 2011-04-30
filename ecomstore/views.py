@@ -7,7 +7,7 @@ from django.template import Context
 
 
 def index(request):
-    if not(request.user.is_authenticated()):
+    if request.user.is_authenticated():
         plantilla = get_template('usuarios.html')
     else:
         plantilla = get_template('admin/admin.html')

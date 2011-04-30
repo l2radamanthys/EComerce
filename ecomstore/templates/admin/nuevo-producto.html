@@ -1,0 +1,36 @@
+{% extends "admin/admin.html" %}
+
+{% block cuerpo %}
+    <h2>Agregar Producto</h2>
+    <br />
+    <br />
+
+    <form action="" method="post"  >
+    <table>
+        <tr><td><label>Nombre</label></td><td><input name="nombre" class="edt_m" type="text"  /></td></tr>
+        <tr><td><label>Slug</label></td><td><input name="slug" class="edt_m" type="text"  /></td></tr>
+        <tr><td><label>Marca</label></td><td><input name="marca" class="edt_m" type="text"  /></td></tr>
+        <tr><td><label>Sku</label></td><td><input name="sku" class="edt_m" type="text"  /></td></tr>
+        <tr><td><label>Imagen</label></td><td><input type="file"  name="imagen" class="boton"  ></td></tr>
+        <tr><td><label>Precio</label></td><td><input name="precio" class="edt_c" type="text"  /></td></tr>
+        <tr><td><label>Precio Anterior</label></td><td><input name="precio_ant" class="edt_c" type="text"  /></td></tr>
+        <tr><td><label>is_bestseller</label></td><td><input name="is_bestseller" type="checkbox" class="edt" /></td></tr>
+        <tr><td><label>is_featured</label></td><td><input name="is_featured" type="checkbox" class="edt" /></td></tr>
+        <tr><td><label>Esta Activo</label></td><td><input name="is_active" type="checkbox" class="edt"  CHECKED /></td></tr>
+        <tr><td><label>Descripcion</label></td><td><textarea name="descripcion" type="textarea" class="edt"  ></textarea></td></tr>
+        <tr>
+            <td><label>Categoria</label></td>
+            <td>
+                <input name="categoria" class="edt_m" type="text"  />
+            </td>
+        </tr>
+        <tr><td colspan="2"><input type="hidden" value="1" name="query"  /></td></tr>
+        <tr><td colspan="2">
+            <input type="submit" value="Crear"  class="boton" />
+            <input type="reset" value="Limpiar" class="boton" />
+            </td>
+        </tr>
+        <tr></td></tr>
+    </table>
+    </form>
+{% endblock %}

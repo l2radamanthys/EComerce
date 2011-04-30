@@ -14,7 +14,7 @@ def generar_carrito_id():
     carrito_id_len = 50
     key = ""
     for i in range(carrito_id_len):
-        key +=caracteres[randint(0, len(caracteres)-1)]
+        key += caracteres[randint(0, len(caracteres)-1)]
     return key
 
 

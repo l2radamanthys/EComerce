@@ -5,15 +5,22 @@
 
     <br />
     <br />
-    <form action="#" method="post"  >
+    <form action="/catalogo/producto/agregar-categoria/" method="post">
     <table>
         <tr><td><label>Categoria</label></td><td><input name="categoria" class="edt_m" type="text"  /></td></tr>
         <tr><td><label>SLUG</label></td><td><input name="slug" class="edt_m" type="text"  /></td></tr>
         <tr><td><label>Descripcion</label></td><td><textarea name="descripcion" type="textarea" class="edt"  ></textarea></td></tr>
         <tr><td><label>Metatags</label></td><td><input name="meta_keywords" class="edt_g" type="text"  /></td></tr>
         <tr><td><label>Meta Descripcion</label></td><td><input name="meta_descripcion" class="edt_g" type="text"  /></td></tr>
-        <tr><td colspan="2"><input type="hidden" value="0" name="q"  /></td></tr>
+        <tr><td colspan="2"><input type="hidden" value="1" name="query"  /></td></tr>
         <tr><td colspan="2"><input type="submit" value="Crear" class="boton" /><input type="reset" value="Limpiar" class="boton" /></td></tr>
     </table>
     </form>
+
+    {% if query %}
+        <div class='{{ msj_class }}'>
+            <p>{{ mensaje }}</p>
+        </div>
+    {% endif %}
+
 {% endblock %}
