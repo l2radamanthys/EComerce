@@ -3,7 +3,6 @@
 
 
 from django.conf.urls.defaults import *
-
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -11,7 +10,6 @@ admin.autodiscover()
 #propios
 from settings import MEDIA_ROOT
 import views
-
 import catalogo.views as catalogo_views
 
 urlpatterns = patterns('',
@@ -30,10 +28,14 @@ urlpatterns = patterns('',
     #urls
     (r'^/?$', views.index),
 
-    ## - catalgo - ##
-    (r'^catalogo/producto/nuevo/$', catalogo_views.nuevo_producto),
+    ## - catalgo - adm
     (r'^catalogo/producto/agregar-categoria/$', catalogo_views.agregar_categoria),
-    (r'^catalogo/producto/listado-categorias/$' ,catalogo_views.listado_categorias),
+    (r'^catalogo/producto/nuevo/$', catalogo_views.nuevo_producto),
+
+    ## - catalgo - users
+    (r'^catalogo/producto/info/(\d{1,2})/$', catalogo_views.producto_info),
+    (r'^catalogo/producto/info/$', catalogo_views.producto_info),
+    (r'^catalogo/producto/listado/$', catalogo_views.productos_listado),
 
     ## - usuarios - ##
     #(r'^accounts/login/$', generics_views.login),

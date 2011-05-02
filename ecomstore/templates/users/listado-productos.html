@@ -1,0 +1,30 @@
+{% extends "users/usuarios.html" %}
+
+{% block cuerpo %}
+
+    <h2>Categorias</h2>
+    <hr />
+    {% for cat in categorias %}
+        <a href="catalogo/producto/listado/?cat={{ cat }}&pag=0">{{ cat }}</a>
+    {% endfor %}
+    <hr />
+    <table>
+        {% for prod in productos %}
+        <tr>
+            <td><img src="/static/{{ prod|slice:'2:'|first }}" width='90px' height='70px'/></td>
+            <td>
+                <a class="link" href="/catalogo/producto/info/{{ prod|slice:'0:'|first }}/"><h3>{{ prod|slice:'1:'|first }} - {{ prod|slice:'3:'|first }}$</h3></a>
+                <p>{{ prod|slice:'4:'|first }}</p>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <hr />
+    <div align="right">
+        <a class="boton" href="catalogo/producto/listado/?cat={{ categoria }}&pag=0">Anterior </a>&nbsp;
+        <label>{{ 0 }}</label>&nbsp;
+        <a class="boton" href="catalogo/producto/listado/?cat={{ categoria }}&pag=0">Siguiente</a>
+    </div>
+
+{% endblock %}

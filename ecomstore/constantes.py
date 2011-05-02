@@ -15,3 +15,6 @@ MI_TEMPLATE_DIR = os.path.join(PROJECT_PATH, 'templates')
 
 POST = "POST"
 GET = "GET"
+
+#numero maximo de registros a mostrar por consulta
+MAX_REG = 5

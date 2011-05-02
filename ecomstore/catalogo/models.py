@@ -35,18 +35,18 @@ class Producto(models.Model):
     nombre = models.CharField(max_length=255, unique=True)
     slug = models.SlugField(max_length=50, unique=True, help_text='unico valor del producto para la URL')
     marca = models.CharField(max_length=50)
-    sku = models.CharField(max_length=50)
+    sku = models.CharField(help_text="Numero de Referencia", max_length=50)
     imagen = models.ImageField(upload_to="imagenes/fotos")
-    precio = models.DecimalField(max_digits=9, decimal_places=2)
-    precio_anterior = models.DecimalField(max_digits=9, decimal_places=2, blank=True, default=0.00)
+    precio = models.DecimalField(max_digits=9, decimal_places=2, default="0.00")
+    precio_anterior = models.DecimalField(max_digits=9, decimal_places=2, blank=True, default="0.00")
     is_bestseller = models.BooleanField(default=False) #?
     is_featured = models.BooleanField(default=False) #?
-    cantidad = models.IntegerField()
-    descripcion = models.TextField()
+    cantidad = models.IntegerField("cantidad en stock", default=0)
+    descripcion = models.TextField("descripcion del Producto")
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True, help_text="Fecha creacion")
     updated_at = models.DateTimeField(auto_now=True, help_text="Ultima Modificacion")
-    
+
     #categorias = models.ManyToManyField(Categoria)
     categoria = models.ForeignKey(Categoria)
 
@@ -57,12 +57,19 @@ class Producto(models.Model):
 
 
     def __unicode__(self):
-        return self.name
+        return self.nombre
 
 
     @models.permalink
     def get_absolute_url(self):
         return ('catalog_product', (), { 'product_slug': self.slug })
+
+
+    def get_url_img(self):
+        if self.imagen.name != "":
+            return self.imagen.name
+        else:
+            return "imagenes/fotos/default.png"
 
 
     def precio_venta(self):

@@ -46,3 +46,19 @@ def get_value(request=None, key='', default='', blank='', method=POST):
         return get_POST_value(request, key, default, blank)
     else:
         return get_GET_value(request, key, default, blank)
+
+
+def generar_base_dict(request):
+    """
+        genera el dicionario de datos basicos para el renderizado
+        de la plantilla
+    """
+    dict = {}
+    if request.user.is_authenticated():
+        #request.session["autenticate"] = True
+        dict['autenticate'] = True
+    else:
+        #request.session["autenticate"] = False
+        dict['autenticate'] = False
+
+    return dict

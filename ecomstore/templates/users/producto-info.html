@@ -1,0 +1,50 @@
+{% extends "users/usuarios.html" %}
+
+{% block cuerpo %}
+    <div align="center">
+    <table class="product_info_table">
+        <tr>
+            <td rowspan="5"><img src="/static/{{ imagen }}" width="150px" height="150px"></td>
+            <td colspan="2"><h2>{{ nombre }}</h2></td>
+        </tr>
+
+        <tr>
+            <td><strong>Marca:</strong></td>
+            <td>{{ marca }}</td>
+        </tr>
+
+        <tr>
+            <td><strong>Categoria:</strong></td>
+            <td>{{ categoria }}</td>
+        </tr>
+
+        <tr>
+            <td><strong>Antes:</strong></td>
+            <td>{{ precio_anterior }} $</td>
+        </tr>
+
+        <tr>
+            <td><strong>Ahora:</strong></td>
+            <td>{{ precio }} $</td>
+        </tr>
+
+        <tr>
+            <td colspan="3">
+                <h4>Descripcion:</h4>
+                {{ descripcion }}
+            </td>
+        </tr>
+
+    </table>
+    </div>
+    <br />
+    <div align="right">
+    <form action="" method="POST">
+        <label>Cantidad:</label>
+        <input type="text" name="cantidad" value="1" class="edt_c">
+        <input type="submit" value="Agregar al Carrito" class="boton" />
+    </form>
+
+    </div>
+
+{% endblock %}

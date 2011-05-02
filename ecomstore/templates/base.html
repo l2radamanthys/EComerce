@@ -18,6 +18,15 @@
                 {% block secundario %}
                 {% endblock%}
 
+                {% block seccion %}
+                    {% if autenticate %}
+                        <p>online</p>
+                    {% else %}
+                        <p>offline</p>
+                    {% endif%}
+                {% endblock %}
+
+
             </div>
 
             <div class="principal">
