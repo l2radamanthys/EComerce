@@ -60,9 +60,9 @@ class Producto(models.Model):
         return self.nombre
 
 
-    @models.permalink
-    def get_absolute_url(self):
-        return ('catalog_product', (), { 'product_slug': self.slug })
+    #@models.permalink
+    #def get_absolute_url(self):
+    #    return ('catalog_product', (), { 'product_slug': self.slug })
 
 
     def get_url_img(self):
@@ -73,7 +73,7 @@ class Producto(models.Model):
 
 
     def precio_venta(self):
-        if self.old_price > self.price:
-            return self.price
+        if self.precio_anterior > self.precio:
+            return self.precio
         else:
-            return None
+            return self.precio

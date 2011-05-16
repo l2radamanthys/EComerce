@@ -130,20 +130,42 @@ def producto_info(request, prod_id="-1"):
         dict["precio"] = producto.precio
         dict["descripcion"] = producto.descripcion
         dict["imagen"] = producto.get_url_img()
+        dict["prod_id"] = producto.id
 
     contexto = Context(dict)
     html = plantilla.render(contexto)
     return HttpResponse(html)
 
 
-def listar_producto_adm(request, prod_id=""):
-    plantilla = get_template('admin/nuevo-producto.html')
+def productos_listado_adm(request, prod_id=""):
+    plantilla = get_template('admin/listado-productos.html')
     dict = generar_base_dict(request)
 
     #productos = []
     #for prod in Productos.objects.all():
     #    productos.append([prod.nombre, prod.get_url_img(), prod.precio])
     #dict["productos"] = productos
+
+    categorias = []
+    for cat in Categoria.objects.all():
+        categorias.append( cat.nombre)
+    dict["categorias"] = categorias
+
+    #pregunto por q categoria va a realizar la busqueda
+    categoria = get_GET_value(request, "cat", "")
+    dict["categoria"] = categoria
+
+    if categoria == "":
+        _productos = Producto.objects.all()
+    else:
+        _productos = Producto.objects.filter(categoria__nombre=categoria)
+
+    productos = []
+    for prod in _productos:
+        productos.append([prod.id, prod.nombre, prod.categoria.nombre])
+
+    dict["productos"] = productos
+
 
     contexto = Context(dict)
     html = plantilla.render(contexto)
@@ -163,10 +185,10 @@ def productos_listado(request):
     categoria = get_GET_value(request, "cat", "")
     dict["categoria"] = categoria
     
-    if cat == "":
+    if categoria == "":
         _productos = Producto.objects.all()
     else:
-        _productos = Producto.objects.all()#filter(categoria__nombre=categoria)
+        _productos = Producto.objects.filter(categoria__nombre=categoria)
 
 
     pag = int(get_GET_value(request, "pag", "0"))
@@ -175,10 +197,13 @@ def productos_listado(request):
     if pag > num_pag:
         pag = num_pag
     offset = pag * MAX_REG
+    if offset < num_pag:
+        offset = num_pag
     
     productos = []
     for prod in _productos:
         productos.append([prod.id, prod.nombre, prod.get_url_img(), prod.precio, prod.descripcion])
+
     dict["productos"] = productos
 
     contexto = Context(dict)

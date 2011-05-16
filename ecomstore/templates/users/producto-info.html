@@ -39,9 +39,10 @@
     </div>
     <br />
     <div align="right">
-    <form action="" method="POST">
+    <form action="/carrito/agregar-al-carrito/" method="POST">
         <label>Cantidad:</label>
         <input type="text" name="cantidad" value="1" class="edt_c">
+        <input type="hidden" name="prod_id" value="{{ prod_id }}">
         <input type="submit" value="Agregar al Carrito" class="boton" />
     </form>
 

@@ -1,0 +1,48 @@
+{% extends "admin/admin.html" %}
+
+{% block secundario %}
+<h3>Categorias</h3>
+    <ul>
+    <li><a href="/catalogo/producto/listado-adm/">Todos</a></li>
+    {% for cat in categorias %}
+        <li><a href="/catalogo/producto/listado-adm/?cat={{ cat }}&pag=0">{{ cat }}</a></li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}
+
+{% block cuerpo %}
+    <table>
+        <tr>
+            <th>Nombre Producto</th>
+            <th>Categoria</th>
+            <th>Ver</th>
+            <th>Edit</th>
+            <th>Del</th>
+        </tr>
+
+        {% for prod in productos %}
+        <tr class="field">
+            <td>{{ prod|slice:'1:'|first }}</td>
+            <td>{{ prod|slice:'2:'|first }}</td>
+            <td>
+                <a href="/catalogo/producto/info/{{ prod|slice:'0:'|first }}/"><img src="/static/imagenes/icon_ver.png"></a>
+            </td>
+            <td>
+                <a href="/catalogo/producto/modificar/{{ prod|slice:'0:'|first }}/"><img src="/static/imagenes/icon_edit.png"></a>
+            </td>
+            <td>
+                <a href="/catalogo/producto/borrar/{{ prod|slice:'0:'|first }}/"><img src="/static/imagenes/icon_borrar.png"></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <hr />
+    <div align="right">
+        <a class="boton" href="/catalogo/producto/listado/?cat={{ categoria }}&pag=0">Anterior </a>&nbsp;
+        <label>{{ 0 }}</label>&nbsp;
+        <a class="boton" href="/catalogo/producto/listado/?cat={{ categoria }}&pag=0">Siguiente</a>
+    </div>
+
+{% endblock %}

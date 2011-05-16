@@ -1,0 +1,31 @@
+{% extends "users/usuarios.html" %}
+
+
+{% block cuerpo %}
+    <h1>Mi Carrito Compras</h1>
+
+    <table>
+        <!--tr>
+        </tr-->
+    {% for prod in carrito %}
+        <tr>
+            <form action="" method="post">
+            <td>{{ prod|slice:'3:'|first }}</td>
+            <td>{{ prod|slice:'1:'|first }}</td>
+            <td><input type="text" name="cantidad" value="{{ prod|slice:'2:'|first }}"></td>
+            <td>
+            <input type="hidden" name="prod_id" value="{{ prod|slice:'0:'|first }}" />
+            <input type="submit" class="boton">
+            </td>
+            <td><a href="" class="boton">Borrar</a></td>
+            </form>
+        </tr>
+    {% endfor %}
+    </table>
+
+    <br />
+    <a class="boton" href="">Vaciar Carrito</a>
+    <a class="boton" href="">Generar Ticket</a>
+    <br />
+
+{% endblock %}

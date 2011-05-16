@@ -22,13 +22,13 @@ def get_carrito_id(request):
     """
         Obtiene el id del Carrito Actual
     """
-    if request.session.get('carrito_id', None) != None:
+    if request.session.get('carrito_id', None) == None:
         request.session['carrito_id'] = generar_carrito_id()
     return request.session['carrito_id']
 
 
 def get_GET_value(request, key='', default='', blank=''):
-    value = request.POST.get(key, default)
+    value = request.GET.get(key, default)
     if value == '':
         value = blank
     return value
@@ -60,5 +60,8 @@ def generar_base_dict(request):
     else:
         #request.session["autenticate"] = False
         dict['autenticate'] = False
+
+    #en caso de no estar definido el carrito lo genera
+    carrito_id = get_carrito_id(request)
 
     return dict

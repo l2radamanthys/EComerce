@@ -11,6 +11,8 @@ admin.autodiscover()
 from settings import MEDIA_ROOT
 import views
 import catalogo.views as catalogo_views
+import carrito.views as carrito_views
+
 
 urlpatterns = patterns('',
     # Example:
@@ -29,18 +31,27 @@ urlpatterns = patterns('',
     (r'^/?$', views.index),
 
     ## - catalgo - adm
+    # categorias
     (r'^catalogo/producto/agregar-categoria/$', catalogo_views.agregar_categoria),
+    (r'^catalogo/producto/listado-categorias/$', catalogo_views.listado_categorias),
+
+    #productos
     (r'^catalogo/producto/nuevo/$', catalogo_views.nuevo_producto),
+    (r'^catalogo/producto/listado-adm/$', catalogo_views.productos_listado_adm),
 
     ## - catalgo - users
     (r'^catalogo/producto/info/(\d{1,2})/$', catalogo_views.producto_info),
     (r'^catalogo/producto/info/$', catalogo_views.producto_info),
     (r'^catalogo/producto/listado/$', catalogo_views.productos_listado),
 
+    ## carrito
+    (r'^carrito/agregar-al-carrito/$', carrito_views.agregar_al_carrito),
+    (r'^carrito/mostrar/$', carrito_views.mostrar_carrito),
+    #(r'^carrito/generar_ticket/$', carrito_views.generar_ticket),
+    
+
     ## - usuarios - ##
     #(r'^accounts/login/$', generics_views.login),
     #(r'^accounts/logout/$', generics_views.logout),
 
-
-    
 )

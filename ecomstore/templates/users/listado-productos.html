@@ -1,13 +1,18 @@
 {% extends "users/usuarios.html" %}
 
-{% block cuerpo %}
-
-    <h2>Categorias</h2>
-    <hr />
+{% block secundario %}
+    <h3>Categorias</h3>
+    <ul>
+    <li><a href="/catalogo/producto/listado/">Todos</a></li>
     {% for cat in categorias %}
-        <a href="catalogo/producto/listado/?cat={{ cat }}&pag=0">{{ cat }}</a>
+        <li><a href="/catalogo/producto/listado/?cat={{ cat }}&pag=0">{{ cat }}</a></li>
     {% endfor %}
-    <hr />
+    </ul>
+{% endblock %}
+
+
+{% block cuerpo %}
+    <h1>{{ categoria }}</h1>
     <table>
         {% for prod in productos %}
         <tr>
@@ -22,9 +27,9 @@
 
     <hr />
     <div align="right">
-        <a class="boton" href="catalogo/producto/listado/?cat={{ categoria }}&pag=0">Anterior </a>&nbsp;
+        <a class="boton" href="/catalogo/producto/listado/?cat={{ categoria }}&pag=0">Anterior </a>&nbsp;
         <label>{{ 0 }}</label>&nbsp;
-        <a class="boton" href="catalogo/producto/listado/?cat={{ categoria }}&pag=0">Siguiente</a>
+        <a class="boton" href="/catalogo/producto/listado/?cat={{ categoria }}&pag=0">Siguiente</a>
     </div>
 
 {% endblock %}
